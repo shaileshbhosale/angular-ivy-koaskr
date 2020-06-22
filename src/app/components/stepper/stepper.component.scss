@@ -1,0 +1,53 @@
+.mat-stepper-horizontal, .mat-stepper-vertical {
+  background-color: transparent;
+}
+
+// ::ng-deep .mat-horizontal-stepper-header {
+//   flex-direction: column;
+//   top: 1rem;
+//   justify-content: space-evenly;
+//   padding: 0 8px 0 16px !important;
+// }
+
+::ng-deep .mat-step-icon:not(.mat-step-icon-state-done) .mat-step-icon-content {
+  display: none;
+}
+
+::ng-deep .mat-stepper-horizontal-line {
+  border-top-style: solid;
+}
+
+::ng-deep .mat-horizontal-stepper-header {
+  &[ng-reflect-state='done'] + .mat-stepper-horizontal-line {
+  border-top-color: green;
+  }
+
+  &[ng-reflect-selected='false'] + .mat-stepper-horizontal-line {
+    border-top-style: green;
+  }
+}
+
+::ng-deep .mat-stepper-label-position-bottom {
+  .mat-horizontal-stepper-header[ng-reflect-state='done']:not(:last-child)::after {
+    border-top-color: green;
+  }
+  // .mat-horizontal-stepper-header[ng-reflect-state='done']:not(:first-child)::before {
+  //   border-top-color: green;
+  // }
+  .mat-horizontal-stepper-header[ng-reflect-state='done'] ~ .mat-horizontal-stepper-header:not([ng-reflect-state='number'])::before {
+    border-top-color: green;
+  }
+}
+
+::ng-deep .mat-vertical-stepper-header[ng-reflect-state='done'] + .mat-stepper-vertical-line::before {
+  border-left-color: green !important;
+}
+
+::ng-deep .cdk-program-focused {
+  background-color: transparent !important;
+}
+
+.main-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}

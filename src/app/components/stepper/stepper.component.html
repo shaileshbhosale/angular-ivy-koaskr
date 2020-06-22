@@ -1,0 +1,128 @@
+<ng-template #stepOne>
+  <h2>Setup your Password & Security Answers</h2>
+  <app-set-password></app-set-password>
+</ng-template>
+<ng-template #stepTwo>
+  <h2>Identity Verification</h2>
+</ng-template>
+<ng-template #stepThree>
+  <h2>Card Holder Information</h2>
+</ng-template>
+<ng-template #stepFour>
+  <h2>Beneficial Owner</h2>
+</ng-template>
+<ng-template #stepFive>
+  <h2>Declaration</h2>
+  <p>Please certify following</p>
+</ng-template>
+<ng-template #stepSix>
+  <p>Your enrolment is almost complete.</p>
+</ng-template>
+<ng-template #prevNext>
+  <div>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext>Save & Next</button>
+  </div>
+</ng-template>
+
+
+<ng-template [ngIf]="smallScreen" [ngIfElse]="bigScreen">
+  <mat-vertical-stepper class="alternate-theme" linear #stepper>
+    <mat-step label="Register Your Account">
+      <ng-container *ngTemplateOutlet="stepOne"></ng-container>
+      <div>
+        <button mat-button>Continue Later</button>
+        <button mat-button matStepperNext>Save & Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="KBA - Questions">
+      <ng-container>
+        <ng-container *ngTemplateOutlet="stepTwo"></ng-container>
+        <div>
+          <button mat-button matStepperPrevious>Back</button>
+          <button mat-button matStepperNext>Save & Next</button>
+        </div>
+      </ng-container>
+    </mat-step>
+    <mat-step label="Card Holder Information">
+      <ng-container *ngTemplateOutlet="stepThree"></ng-container>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Save & Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Beneficial Owner">
+      <ng-container *ngTemplateOutlet="stepFour"></ng-container>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Save & Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Legal Information">
+      <ng-container *ngTemplateOutlet="stepFive"></ng-container>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Save & Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Success">
+      <ng-container *ngTemplateOutlet="stepSix"></ng-container>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-vertical-stepper>
+</ng-template>
+
+<ng-template #bigScreen>
+  <mat-horizontal-stepper class="alternate-theme" labelPosition="bottom" linear #stepper>
+    <mat-step label="Register Your Account">
+      <mat-drawer-container>
+        <mat-drawer mode="side" opened position="end">
+          <app-faq></app-faq>
+        </mat-drawer>
+        <mat-drawer-content>
+          <div class="stepper-wrapper">
+            <ng-container *ngTemplateOutlet="stepOne"></ng-container>
+            <button mat-button>Continue Later</button>
+            <button mat-button matStepperNext>Save & Next</button>
+          </div>
+        </mat-drawer-content>
+      </mat-drawer-container>
+    </mat-step>
+    <mat-step label="KBA - Questions">
+      <ng-container *ngTemplateOutlet="stepTwo"></ng-container>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Save & Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Card Holder Information">
+      <ng-container *ngTemplateOutlet="stepThree"></ng-container>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Save & Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Beneficial Owner">
+      <ng-container *ngTemplateOutlet="stepFour"></ng-container>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Save & Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Legal Information">
+      <ng-container *ngTemplateOutlet="stepFive"></ng-container>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Save & Next</button>
+      </div>
+    </mat-step>
+    <mat-step label="Success">
+      <ng-container *ngTemplateOutlet="stepSix"></ng-container>
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
+</ng-template>
